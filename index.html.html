@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>The Backyard Frontier: Travels of a 10-Year-Old Scientist</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800;900&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  body { font-family: 'Inter', sans-serif; }
+  .font-serif { font-family: 'Playfair Display', serif; }
+  .font-mono { font-family: 'JetBrains Mono', monospace; }
+
+  .icon { width: 1.1em; height: 1.1em; display: inline-block; vertical-align: -0.15em; }
+
+  .glass {
+    background: rgba(255,255,255,0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255,255,255,0.15);
+  }
+
+  .card-hover { transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease; }
+  .card-hover:hover { transform: translateY(-6px); border-color: rgba(255,255,255,0.35); }
+
+  .glow-blue:hover { box-shadow: 0 25px 60px -15px rgba(59,130,246,0.5); }
+  .glow-orange:hover { box-shadow: 0 25px 60px -15px rgba(249,115,22,0.5); }
+  .glow-teal:hover { box-shadow: 0 25px 60px -15px rgba(45,212,191,0.5); }
+
+  .btn-gem {
+    background: linear-gradient(135deg, #FB923C 0%, #F97316 45%, #EA580C 100%);
+    box-shadow: 0 10px 30px -8px rgba(249,115,22,0.6), inset 0 1px 1px rgba(255,255,255,0.4);
+  }
+  .btn-gem:hover {
+    box-shadow: 0 15px 40px -8px rgba(249,115,22,0.85), inset 0 1px 1px rgba(255,255,255,0.5);
+    transform: translateY(-2px);
+  }
+
+  .bubble {
+    position: absolute;
+    border-radius: 9999px;
+    background: radial-gradient(circle at 30% 30%, rgba(255,255,255,0.18), rgba(255,255,255,0.02) 70%);
+    filter: blur(2px);
+    animation: floaty 10s ease-in-out infinite;
+  }
+  @keyframes floaty {
+    0%, 100% { transform: translateY(0px) translateX(0px); }
+    50% { transform: translateY(-30px) translateX(15px); }
+  }
+
+  /* 真实标本照片水印徽章 */
+  .medallion {
+    position: absolute;
+    border-radius: 9999px;
+    overflow: hidden;
+    filter: grayscale(1);
+    opacity: 0.16;
+    pointer-events: none;
+  }
+  .medallion img { width: 100%; height: 100%; object-fit: cover; }
+
+  .specimen-tag {
+    border-radius: 9999px;
+    overflow: hidden;
+    border: 3px solid rgba(255,255,255,0.55);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+  }
+  .specimen-tag img { width: 100%; height: 100%; object-fit: cover; }
+</style>
+</head>
+<body class="relative min-h-screen overflow-x-hidden bg-gradient-to-b from-slate-950 via-blue-950 to-slate-900 text-white">
+
+  <!-- SVG 图标库（隐藏，供 <use> 引用） -->
+  <svg style="display:none" aria-hidden="true">
+    <symbol id="icon-compass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="12" cy="12" r="10"/>
+      <polygon points="16.24 7.76 14.12 14.12 7.76 16.24 9.88 9.88 16.24 7.76"/>
+    </symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M2 4h7a4 4 0 0 1 4 4v12a3 3 0 0 0-3-3H2z"/>
+      <path d="M22 4h-7a4 4 0 0 0-4 4v12a3 3 0 0 1 3-3h8z"/>
+    </symbol>
+    <symbol id="icon-cart" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+    </symbol>
+    <symbol id="icon-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 2v6.5L4 18a2 2 0 0 0 1.8 3h12.4a2 2 0 0 0 1.8-3l-5-9.5V2"/><path d="M8 2h8"/><path d="M7 15h10"/>
+    </symbol>
+    <symbol id="icon-sword" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="m14.5 17.5 3-3L21 18l-3.5 3.5z"/><path d="M13 6 5 14l-2 5 5-2 8-8"/><path d="m18 3-3 3"/>
+    </symbol>
+    <symbol id="icon-footprints" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M4 16v-2a4 4 0 0 1 8 0v2"/><circle cx="8" cy="8" r="2"/>
+      <path d="M12 20v-2a4 4 0 0 1 8 0v2"/><circle cx="16" cy="12" r="2"/>
+    </symbol>
+    <symbol id="icon-gem" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M6 3h12l4 6-10 12L2 9Z"/><path d="M11 3 8 9l4 12 4-12-3-6"/><path d="M2 9h20"/>
+    </symbol>
+  </svg>
+
+  <!-- 深海气泡装饰层 -->
+  <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+    <div class="bubble h-72 w-72" style="top:8%; left:6%; animation-duration:12s;"></div>
+    <div class="bubble h-40 w-40" style="top:25%; left:80%; animation-duration:9s;"></div>
+    <div class="bubble h-96 w-96" style="top:55%; left:-5%; animation-duration:14s;"></div>
+    <div class="bubble h-56 w-56" style="top:70%; left:70%; animation-duration:11s;"></div>
+    <div class="bubble h-24 w-24" style="top:40%; left:45%; animation-duration:8s;"></div>
+    <div class="bubble h-32 w-32" style="top:12%; left:50%; animation-duration:13s;"></div>
+  </div>
+
+  <!-- NAV -->
+  <header class="sticky top-4 z-30 mx-auto max-w-6xl px-6">
+    <div class="glass card-hover flex items-center justify-between rounded-full px-6 py-3">
+      <div class="flex items-center gap-2 font-mono text-xs font-bold uppercase tracking-[0.2em] text-orange-300">
+        <svg class="icon"><use href="#icon-compass"/></svg> Backyard Frontier
+      </div>
+      <a href="#cta" class="btn-gem inline-flex items-center gap-1.5 rounded-full px-5 py-2 text-xs font-bold uppercase tracking-widest text-white transition">
+        <svg class="icon"><use href="#icon-gem"/></svg> Get the Book
+      </a>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-28">
+    <div class="grid items-center gap-14 md:grid-cols-2">
+
+      <div>
+        <span class="glass inline-flex items-center gap-2 rounded-full px-4 py-1.5 font-mono text-[11px] uppercase tracking-[0.2em] text-orange-300">
+          Field Report No. 001
+        </span>
+        <h1 class="font-serif mt-6 text-5xl font-extrabold leading-[1.05] tracking-tight sm:text-6xl md:text-7xl">
+          The Backyard
+          <span class="block bg-gradient-to-r from-orange-300 via-orange-400 to-amber-200 bg-clip-text text-transparent">
+            Frontier
+          </span>
+        </h1>
+        <p class="mt-3 font-serif text-xl italic text-slate-300">
+          Travels of a 10-Year-Old Scientist
+        </p>
+        <p class="mt-6 max-w-md text-base leading-relaxed text-slate-300">
+          Field notes on fossils, tidal pools, and the tactical containment
+          of two chaotic toddlers.
+        </p>
+        <div class="mt-9">
+          <a href="#first-chapter" class="btn-gem inline-flex items-center gap-2 rounded-full px-8 py-4 text-sm font-bold uppercase tracking-widest text-white transition">
+            <svg class="icon"><use href="#icon-book"/></svg> Read the First Chapter
+          </a>
+        </div>
+      </div>
+
+      <!-- 封面占位符 + 真实标本照片 -->
+      <div class="flex justify-center">
+        <div class="relative">
+          <div class="glass card-hover glow-blue relative flex aspect-[3/4] w-64 flex-col items-center justify-between overflow-hidden rounded-3xl p-7 text-center sm:w-72">
+            <div>
+              <p class="font-mono text-[10px] uppercase tracking-[0.25em] text-slate-400">Classified — Field Copy</p>
+              <p class="font-serif mt-3 text-2xl font-bold leading-tight">The Backyard Frontier</p>
+            </div>
+            <svg class="icon" style="width:3.5rem; height:3.5rem; color:rgba(255,255,255,0.85);"><use href="#icon-book"/></svg>
+            <p class="font-mono text-[11px] uppercase tracking-wide text-slate-300">Commander Dylan, Author</p>
+          </div>
+
+          <!-- 悬浮标本徽章：真实化石与宝石照片 -->
+          <div class="specimen-tag absolute -right-6 -top-5 h-20 w-20 rotate-6 sm:h-24 sm:w-24">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Iridescent_Ammonite_Fossil.jpg?width=300" alt="真实鹦鹉螺化石标本照片" />
+          </div>
+          <div class="specimen-tag absolute -bottom-4 -left-6 h-16 w-16 -rotate-6 sm:h-20 sm:w-20">
+            <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Amethysts_%289393349739%29.jpg?width=300" alt="真实紫水晶宝石照片" />
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="relative z-10 mx-auto max-w-4xl px-6 py-10">
+    <div class="glass card-hover glow-blue rounded-3xl p-10">
+      <p class="font-mono text-xs uppercase tracking-[0.25em] text-orange-300">About the Book</p>
+      <h2 class="font-serif mt-2 text-3xl font-bold sm:text-4xl">
+        Domestic Confinement &amp; Global Expeditions
+      </h2>
+
+      <p class="mt-6 leading-relaxed text-slate-300">
+        This is not a story. This is a <span class="font-semibold text-white">logistical report</span>,
+        filed by Commander Dylan, age 10, Chief Strategist and Entomologist-in-Training. It documents
+        two operational theaters: the domestic front, and the marine front. Both were compromised
+        by hostile toddler forces at every stage.
+      </p>
+
+      <div class="mt-8 grid gap-3 sm:grid-cols-3">
+        <div class="glass rounded-2xl p-4">
+          <p class="font-mono text-[10px] uppercase tracking-widest text-orange-300">Log 01</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">Survival tactics for the Era of Domestic Confinement, Toronto Division.</p>
+        </div>
+        <div class="glass rounded-2xl p-4">
+          <p class="font-mono text-[10px] uppercase tracking-widest text-orange-300">Log 02</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">Deployment of the "Saliva Deterrent" against Agent Max, repeat intruder.</p>
+        </div>
+        <div class="glass rounded-2xl p-4">
+          <p class="font-mono text-[10px] uppercase tracking-widest text-orange-300">Log 03</p>
+          <p class="mt-1 text-sm leading-relaxed text-slate-300">The 40-day expedition to China, Shandong / Qingdao marine sector.</p>
+        </div>
+      </div>
+
+      <!-- 真实标本照片小档案条 -->
+      <div class="mt-8 flex flex-wrap items-center gap-4 border-t border-white/10 pt-6">
+        <p class="font-mono text-[10px] uppercase tracking-widest text-slate-400">Attached Specimens</p>
+        <div class="specimen-tag h-14 w-14"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ammonite_%28PSF%29.png?width=200" alt="化石线稿插图" /></div>
+        <div class="specimen-tag h-14 w-14"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Quartz_crystals_%2812250418364%29.jpg?width=200" alt="真实石英晶体照片" /></div>
+        <div class="specimen-tag h-14 w-14"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carcinus_maenas.jpg?width=200" alt="真实绿蟹照片" /></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CHAPTER PREVIEWS — BENTO GRID -->
+  <section class="relative z-10 mx-auto max-w-6xl px-6 py-16">
+    <p class="text-center font-mono text-xs uppercase tracking-[0.25em] text-orange-300">Field Excerpts</p>
+    <h2 class="font-serif mt-2 text-center text-4xl font-bold sm:text-5xl">Chapter Previews</h2>
+
+    <div class="mt-12 grid grid-cols-1 gap-6 md:grid-cols-3 md:grid-rows-2">
+
+      <!-- 大卡片：真实化石照片作为满版背景 -->
+      <div class="glass card-hover glow-orange relative overflow-hidden rounded-3xl md:col-span-2 md:row-span-2">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ammonite_fossil_3.jpg?width=1200"
+             alt="真实菊石化石照片" class="absolute inset-0 h-full w-full object-cover opacity-40" />
+        <div class="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent"></div>
+        <div class="relative z-10 flex h-full flex-col justify-end p-8">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-slate-300">Dossier / The Home Front</p>
+          <h3 class="font-serif mt-3 text-3xl font-bold leading-tight sm:text-4xl">
+            The Ordovician Shale &amp; The Penguin Clomp
+          </h3>
+          <p class="mt-4 max-w-md leading-relaxed text-slate-200">
+            Discovery of a brachiopod fossil in a Toronto backyard — interrupted by a 16-month-old
+            "shoe ninja" wearing giant dinosaur boots.
+          </p>
+        </div>
+      </div>
+
+      <!-- 小卡片 1：真实绿蟹照片 -->
+      <div class="glass card-hover glow-teal flex flex-col overflow-hidden rounded-3xl">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Carcinus_maenas.jpg?width=600"
+             alt="真实绿蟹照片" class="h-32 w-full object-cover" />
+        <div class="p-6">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-slate-400">Dossier / Marine Operation</p>
+          <h3 class="font-serif mt-3 text-xl font-bold leading-tight">
+            The Qingdao Crab Crusade
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-300">
+            A tactical operation to capture green crabs in the Yellow Sea, using metal tongs and
+            predictive algorithms.
+          </p>
+        </div>
+      </div>
+
+      <!-- 小卡片 2：真实火星陨石照片（NASA） -->
+      <div class="glass card-hover glow-blue flex flex-col overflow-hidden rounded-3xl">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/ALH84001.jpg?width=600"
+             alt="真实火星陨石标本照片，NASA拍摄" class="h-32 w-full object-cover" />
+        <div class="p-6">
+          <p class="font-mono text-[11px] uppercase tracking-widest text-slate-400">Dossier / The Incident</p>
+          <h3 class="font-serif mt-3 text-xl font-bold leading-tight">
+            The Cosmic Meteorite Fart
+          </h3>
+          <p class="mt-3 text-sm leading-relaxed text-slate-300">
+            Inside the Shanghai Astronomy Museum, a solemn moment with a Martian meteorite is ruined
+            by a Level-Ten Atmospheric Disruption.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FIELD TEAM -->
+  <section class="relative z-10 mx-auto max-w-6xl px-6 py-16">
+    <p class="text-center font-mono text-xs uppercase tracking-[0.25em] text-orange-300">Personnel Files</p>
+    <h2 class="font-serif mt-2 text-center text-4xl font-bold sm:text-5xl">Meet the Field Team</h2>
+
+    <div class="mt-12 grid gap-6 md:grid-cols-3">
+
+      <!-- Commander Dylan -->
+      <div class="glass card-hover glow-blue relative overflow-hidden rounded-3xl p-7 text-center">
+        <div class="medallion h-24 w-24" style="top:-0.75rem; left:-0.75rem;">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ammonite_%28PSF%29.png?width=200" alt="" />
+        </div>
+        <div class="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-blue-400 to-blue-700 text-white shadow-lg ring-4 ring-blue-300/30">
+          <svg class="icon" style="width:2rem; height:2rem;"><use href="#icon-flask"/></svg>
+        </div>
+        <p class="relative z-10 mt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-orange-300">Field ID 01</p>
+        <h3 class="font-serif relative z-10 mt-1 text-xl font-bold">Commander Dylan</h3>
+        <p class="relative z-10 mt-1 text-xs uppercase tracking-wide text-slate-400">Author</p>
+        <p class="relative z-10 mt-4 text-sm leading-relaxed text-slate-300">
+          10-year-old entomologist and chief strategist. Fluent in fossil identification and
+          toddler psychology.
+        </p>
+      </div>
+
+      <!-- Agent Max -->
+      <div class="glass card-hover glow-orange relative overflow-hidden rounded-3xl p-7 text-center">
+        <div class="medallion h-24 w-24" style="top:-0.75rem; right:-0.75rem;">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Quartz_crystals_%2812250418364%29.jpg?width=200" alt="" />
+        </div>
+        <div class="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-orange-400 to-orange-700 text-white shadow-lg ring-4 ring-orange-300/30">
+          <svg class="icon" style="width:2rem; height:2rem;"><use href="#icon-sword"/></svg>
+        </div>
+        <p class="relative z-10 mt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-orange-300">Field ID 02</p>
+        <h3 class="font-serif relative z-10 mt-1 text-xl font-bold">Agent Max</h3>
+        <p class="relative z-10 mt-1 text-xs uppercase tracking-wide text-slate-400">Saboteur, Age 3</p>
+        <p class="relative z-10 mt-4 text-sm leading-relaxed text-slate-300">
+          Special weapon: the "Superhero Sword." Operates without warning, without mercy, and
+          usually without pants.
+        </p>
+      </div>
+
+      <!-- Premium Dough / Lynn -->
+      <div class="glass card-hover glow-teal relative overflow-hidden rounded-3xl p-7 text-center">
+        <div class="medallion h-24 w-24" style="bottom:-0.75rem; left:-0.75rem;">
+          <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Iridescent_Ammonite_Fossil.jpg?width=200" alt="" />
+        </div>
+        <div class="relative z-10 mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-gradient-to-br from-teal-400 to-teal-700 text-white shadow-lg ring-4 ring-teal-300/30">
+          <svg class="icon" style="width:2rem; height:2rem;"><use href="#icon-footprints"/></svg>
+        </div>
+        <p class="relative z-10 mt-5 font-mono text-[10px] uppercase tracking-[0.25em] text-orange-300">Field ID 03</p>
+        <h3 class="font-serif relative z-10 mt-1 text-xl font-bold">The "Premium Dough" (Lynn)</h3>
+        <p class="relative z-10 mt-1 text-xs uppercase tracking-wide text-slate-400">Biological Hazard, Age 16 Months</p>
+        <p class="relative z-10 mt-4 text-sm leading-relaxed text-slate-300">
+          Special skill: walking like a penguin. Classification: adorable, but not to be trusted
+          near open fossil sites.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <div id="first-chapter"></div>
+
+  <!-- CTA -->
+  <section id="cta" class="relative z-10 mx-auto max-w-3xl px-6 py-20">
+    <div class="glass card-hover glow-orange relative overflow-hidden rounded-3xl p-12 text-center">
+      <div class="medallion h-40 w-40" style="top:-2rem; left:-2rem;">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Amethysts_%289393349739%29.jpg?width=300" alt="" />
+      </div>
+      <div class="medallion h-32 w-32" style="bottom:-1.5rem; right:-1.5rem;">
+        <img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ammonite_%28PSF%29.png?width=300" alt="" />
+      </div>
+      <p class="relative z-10 font-mono text-xs uppercase tracking-[0.25em] text-orange-300">Final Briefing</p>
+      <h2 class="font-serif relative z-10 mt-2 text-4xl font-bold sm:text-5xl">Join the Expedition.</h2>
+      <p class="relative z-10 mx-auto mt-4 max-w-md leading-relaxed text-slate-300">
+        Field reports are limited. Toddlers are not. Get your copy before the next incident occurs.
+      </p>
+      <div class="relative z-10 mt-9">
+        <a href="#" class="btn-gem inline-flex items-center gap-2 rounded-full px-9 py-4 text-sm font-bold uppercase tracking-widest text-white transition">
+          <svg class="icon"><use href="#icon-cart"/></svg> Get the Book on Amazon
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="relative z-10 py-10 text-center font-mono text-xs uppercase tracking-wide text-slate-500">
+    <div class="mb-4 flex items-center justify-center gap-2">
+      <div class="specimen-tag h-8 w-8 opacity-70"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Ammonite_%28PSF%29.png?width=100" alt="" /></div>
+      <div class="specimen-tag h-8 w-8 opacity-70"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Amethysts_%289393349739%29.jpg?width=100" alt="" /></div>
+      <div class="specimen-tag h-8 w-8 opacity-70"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Iridescent_Ammonite_Fossil.jpg?width=100" alt="" /></div>
+      <div class="specimen-tag h-8 w-8 opacity-70"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Quartz_crystals_%2812250418364%29.jpg?width=100" alt="" /></div>
+    </div>
+    <p>© 2025 The Backyard Frontier. Filed under: Classified but Hilarious.</p>
+  </footer>
+
+</body>
+</html>
